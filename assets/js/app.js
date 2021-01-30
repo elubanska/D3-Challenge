@@ -27,7 +27,7 @@ console.log("chart: ", chartGroup);
 // Initial Params
 var chosenXAxis = "poverty";
 ///var chosenYAxis = "healthcare";
-console.log("XAxis:", chosenXAxis);
+//console.log("XAxis:", chosenXAxis);
 // function used for updating x-scale var upon click on axis label
 function xScale(povertyData, chosenXAxis) {
   // create scales
@@ -40,6 +40,7 @@ function xScale(povertyData, chosenXAxis) {
   return xLinearScale;
 
 }
+//console.log("XAxis:", chosenXAxis);
 ///1---------------
 // function used for updating y-scale var upon click on axis label
 //function yScale(povertyData, chosenYAxis) {
@@ -64,20 +65,8 @@ function renderAxes(newXScale, xAxis) {
 
   return xAxis;
 }
-///1---------------
-// function used for updating yAxis var upon click on axis label
-//function renderYAxes(newYScale, yAxis) {
-//    var leftAxis = d3.axisLeft(newYScale);
-  
-//    yAxis.transition()
-//      .duration(1000)
-//      .call(leftAxis);
-  
-//    return yAxis;
-//  }
- ///2--------------- 
-// function used for updating circles group with a transition to
-// new circles
+//console.log("XAxis:", chosenXAxis);
+
 function renderCircles(circlesGroup, newXScale, chosenXAxis) {
 
   circlesGroup.transition()
@@ -176,14 +165,14 @@ d3.csv("assets/data/data.csv").then(function(povertyData, err) {
     .attr("y", 20)
     .attr("value", "poverty") // value to grab for event listener
     .classed("active", true)
-    .text("Poverty Test");
+    .text("In Poverty (%)");
 
   var ageLabel = labelsGroup.append("text")
     .attr("x", 0)
     .attr("y", 40)
     .attr("value", "age") // value to grab for event listener
     .classed("inactive", true)
-    .text("Age Test");
+    .text("Age (Median)");
 
   // append y axis
   chartGroup.append("text")
@@ -192,7 +181,7 @@ d3.csv("assets/data/data.csv").then(function(povertyData, err) {
     .attr("x", 0 - (height / 2))
     .attr("dy", "1em")
     .classed("axis-text", true)
-    .text("Number of Billboard 500 Hits");
+    .text("Lacks Healthcare (%)");
 
   // updateToolTip function above csv import
   var circlesGroup = updateToolTip(chosenXAxis, circlesGroup);

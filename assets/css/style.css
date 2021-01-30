@@ -29,3 +29,15 @@ body {
   margin: 0;
   font-size: 16px;
 }
+.jumbotron {
+  background-color:rgb(58, 118, 146) !important; 
+}
+.jumbotron h1{
+      color: white;
+  }
+  .jumbotron h2{
+    color: white;
+}
+.jumbotron p{
+      color: white;
+}
