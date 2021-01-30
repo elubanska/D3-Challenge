@@ -177,6 +177,16 @@ d3.csv("assets/data/data.csv").then(function(povertyData, err) {
     
 
   // Create group for x-axis labels
+var circleLabels = chartGroup.selectAll(".stateText")
+        .data(povertyData)
+        .enter()
+        .append("text")
+        .classed("stateText",true)
+        .attr("x", d => xLinearScale(d[chosenXAxis]))
+        .attr("y", d => yLinearScale(d.healthcare))
+        .text(d => d.abbr)
+
+
   var labelsGroup = chartGroup.append("g")
     .attr("transform", `translate(${width / 2}, ${height + 20})`);
 
