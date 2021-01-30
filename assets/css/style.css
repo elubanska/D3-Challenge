@@ -41,3 +41,17 @@ body {
 .jumbotron p{
       color: white;
 }
+.tooltip {
+  position: absolute;
+  width: 165px;
+  height: 60px;
+  padding: 2px;
+  padding-top: 8px;
+  font: 14px sans-serif;
+  color: white;
+  text-align: center;
+  background: #1a99af;
+  border: 0;
+  border-radius: 10px;
+}
+
