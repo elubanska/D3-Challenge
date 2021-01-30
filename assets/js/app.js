@@ -103,15 +103,14 @@ function updateToolTip(chosenXAxis, circlesGroup) {
 
   var toolTip = d3.tip()
     .attr("class", "tooltip")
-    .offset([100, -200])
     .html(function(d) {
       return (`${d.state}<br>${xlabel} ${d[chosenXAxis]}`);
     });
 
-  circlesGroup.call(toolTip);
+    chartGroup.call(toolTip);
 
   circlesGroup.on("mouseover", function(data) {
-    toolTip.show(data);
+    toolTip.show(data, this);
   })
     // onmouseout event
     .on("mouseout", function(data, index) {
