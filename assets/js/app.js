@@ -164,7 +164,7 @@ d3.csv("assets/data/data.csv").then(function(povertyData, err) {
     .attr("cx", d => xLinearScale(d[chosenXAxis]))
     .attr("cy", d => yLinearScale(d.healthcare))
     .attr("r", 20)
-    .attr("fill", "pink")
+    .attr("fill", "blue")
     .attr("opacity", ".5");
 
   // Create group for two x-axis labels
