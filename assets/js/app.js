@@ -33,7 +33,7 @@ function xScale(povertyData, chosenXAxis) {
   // create scales
   var xLinearScale = d3.scaleLinear()
     .domain([d3.min(povertyData, d => d[chosenXAxis]) * 0.8,
-      d3.max(povertyData, d => d[chosenXAxis]) * 1.2
+      d3.max(povertyData, d => d[chosenXAxis]) * 1.1
     ])
     .range([0,width]);
 
@@ -46,8 +46,8 @@ function xScale(povertyData, chosenXAxis) {
 function yScale(povertyData, chosenYAxis) {
     // create scales
     var yLinearScale = d3.scaleLinear()
-      .domain([d3.min(povertyData, d => d[chosenYAxis]) * 0.8,
-        d3.max(povertyData, d => d[chosenYAxis]) * 1.2
+      .domain([d3.min(povertyData, d => d[chosenYAxis]) * 0.5,
+        d3.max(povertyData, d => d[chosenYAxis]) *1.1
       ])
       .range([height, 0]);
   
@@ -65,7 +65,7 @@ function renderXAxes(newXScale, xAxis) {
 
   return xAxis;
 }
-/*function renderYAxes(newYScale, yAxis) {
+function renderYAxes(newYScale, yAxis) {
     var leftAxis = d3.axisLeft(newYScale);
   
     yAxis.transition()
@@ -74,7 +74,7 @@ function renderXAxes(newXScale, xAxis) {
   
     return yAxis;
   }
-  */
+  
 //console.log("XAxis:", chosenXAxis);
 
 function renderCircles(circlesGroup, newXScale, chosenXAxis) {
@@ -171,6 +171,10 @@ d3.csv("assets/data/data.csv").then(function(povertyData, err) {
     .attr("r", 20)
     .attr("fill", "steelblue")
     .attr("opacity", ".5");
+
+    //circlesGroup.append("text")
+    //.attr("dx", function(d){return -20})
+    
 
   // Create group for x-axis labels
   var labelsGroup = chartGroup.append("g")
