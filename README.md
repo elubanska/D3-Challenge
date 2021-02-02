@@ -16,9 +16,9 @@ The data set included with the analysis is based on 2014 ACS 1-year estimates fr
 JavaScript/D3/HTML/CSS
 
 ## Live webpage
+https://elubanska.github.io/D3-Challenge/
 
-
-##Thanks for stopping by!
+## Thanks for stopping by!
 
 ### Copyright
 
