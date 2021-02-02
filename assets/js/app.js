@@ -40,8 +40,7 @@ function xScale(povertyData, chosenXAxis) {
   return xLinearScale;
 
 }
-//console.log("XAxis:", chosenXAxis);
-///1---------------
+
 // function used for updating y-scale var upon click on axis label
 function yScale(povertyData, chosenYAxis) {
     // create scales
@@ -54,7 +53,7 @@ function yScale(povertyData, chosenYAxis) {
     return yLinearScale;
   
   }
-///2---------------
+
 // function used for updating xAxis var upon click on axis label
 function renderXAxes(newXScale, xAxis) {
   var bottomAxis = d3.axisBottom(newXScale);
@@ -75,7 +74,6 @@ function renderYAxes(newYScale, yAxis) {
     return yAxis;
   }
   
-//console.log("XAxis:", chosenXAxis);
 
 function renderCircles(circlesGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
 
@@ -155,18 +153,11 @@ d3.csv("assets/data/data.csv").then(function(povertyData, err) {
     data.obesity = +data.obesity;
   });
   console.log("poverty:",povertyData);
-  //console.log("poverty:",povertyData.poverty);
-  // xLinearScale function above csv import
+ 
   var xLinearScale = xScale(povertyData, chosenXAxis);
 
   var yLinearScale = yScale(povertyData, chosenYAxis);
-  ///------------------
-  // Create y scale function
-///  var yLinearScale = d3.scaleLinear()
-///   .domain([0, d3.max(povertyData, d => d.healthcare)])
-///   .range([height, 0]);
-  ///------------------
-  // Create initial axis functions
+ 
   var bottomAxis = d3.axisBottom(xLinearScale);
   var leftAxis = d3.axisLeft(yLinearScale);
 
@@ -192,11 +183,7 @@ d3.csv("assets/data/data.csv").then(function(povertyData, err) {
     .attr("fill", "steelblue")
     .attr("opacity", ".5");
 
-    //circlesGroup.append("text")
-    //.attr("dx", function(d){return -20})
-    
-
-  // Create group for x-axis labels
+    // Create group for x-axis labels
   var circleLabels = chartGroup.selectAll(".stateText")
     .data(povertyData)
     .enter()
@@ -231,9 +218,6 @@ d3.csv("assets/data/data.csv").then(function(povertyData, err) {
     .classed("inactive", true)
     .text("Household Income (Median)");
 
-  //var labelsYGroup = chartGroup.append("g")
-  //  .attr("transform", `translate(${width / 2}, ${height + 20})`);
-    
   var healthcareLabel = labelsGroup.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", height/1.8)
@@ -258,15 +242,6 @@ d3.csv("assets/data/data.csv").then(function(povertyData, err) {
     .classed("inactive", true)
     .text("Obese (%)");
 
- /* // append y axis
-  chartGroup.append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left/2)
-    .attr("x", 0 - (height / 1.6))
-    .attr("dy", "1em")
-    .classed("axis-text", true)
-    .text("Lacks Healthcare (%)");
-*/
   // updateToolTip function above csv import
   var circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
