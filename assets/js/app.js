@@ -184,14 +184,14 @@ d3.csv("assets/data/data.csv").then(function(povertyData, err) {
     
 
   // Create group for x-axis labels
-var circleLabels = chartGroup.selectAll(".stateText")
-        .data(povertyData)
-        .enter()
-        .append("text")
-        .classed("stateText",true)
-        .attr("x", d => xLinearScale(d[chosenXAxis]))
-        .attr("y", d => yLinearScale(d.healthcare))
-        .text(d => d.abbr)
+  var circleLabels = chartGroup.selectAll(".stateText")
+    .data(povertyData)
+    .enter()
+    .append("text")
+    .classed("stateText",true)
+    .attr("x", d => xLinearScale(d[chosenXAxis]))
+    .attr("y", d => yLinearScale(d.healthcare))
+    .text(d => d.abbr)
 
 
   var labelsGroup = chartGroup.append("g")
@@ -211,23 +211,41 @@ var circleLabels = chartGroup.selectAll(".stateText")
     .classed("inactive", true)
     .text("Age (Median)");
 
-    var obesityLabel = labelsGroup.append("text")
+  var obesityLabel = labelsGroup.append("text")
     .attr("x", 0)
     .attr("y", 60)
     .attr("value", "income") // value to grab for event listener
     .classed("inactive", true)
     .text("Household Income (Median)");
-    
- //   var healthcareLabel = labelsGroup.append("text")
- //   .attr("transform", "rotate(-90)")
- //   .attr("y", 0 - margin.left)
- //   .attr("x", 0 - (height / 2))
- //   .attr("dy", "1em")
- //   .attr("value", "healtcare") // value to grab for event listener
- //   .classed("active", true)
-  //  .text("Lacks Healthcare (%)");
 
-  // append y axis
+  var labelsYGroup = chartGroup.append("g")
+    .attr("transform", `translate(${width / 2}, ${height + 20})`);
+    
+  var healthcareLabel = labelsYGroup.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("x", height/1.8)
+    .attr("y", 0 - (width/1.85 ))
+    .attr("value", "healtcare") // value to grab for event listener
+    .classed("active", true)
+    .text("Lacks Healthcare (%)");
+
+  var smokesLabel = labelsYGroup.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("x", height/1.8 )
+    .attr("y", 0 - (width/1.75) )
+    .attr("value", "smokes") // value to grab for event listener
+    .classed("inactive", true)
+    .text("Smokes (%)");
+
+  var incomeLabel = labelsYGroup.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("x", height/1.8 )
+    .attr("y", 0 - (width/1.65) )
+    .attr("value", "income") // value to grab for event listener
+    .classed("inactive", true)
+    .text("Household Income (Median)");
+
+ /* // append y axis
   chartGroup.append("text")
     .attr("transform", "rotate(-90)")
     .attr("y", 0 - margin.left/2)
@@ -235,7 +253,7 @@ var circleLabels = chartGroup.selectAll(".stateText")
     .attr("dy", "1em")
     .classed("axis-text", true)
     .text("Lacks Healthcare (%)");
-
+*/
   // updateToolTip function above csv import
   var circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
 
