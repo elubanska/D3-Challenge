@@ -86,6 +86,14 @@ function renderCircles(circlesGroup, newXScale, chosenXAxis) {
   return circlesGroup;
 }
 
+function renderLabels(circleLabels, newXScale, chosenXAxis) {
+
+  circleLabels.transition()
+    .duration(1000)
+    .attr("x", d => newXScale(d[chosenXAxis]));
+
+  return circleLabels;
+}
 // function used for updating circles group with new tooltip
 function updateToolTip(chosenXAxis, circlesGroup) {
 
@@ -255,6 +263,8 @@ var circleLabels = chartGroup.selectAll(".stateText")
 
         // updates tooltips with new info
         circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
+
+        circleLabels = renderLabels(circleLabels, xLinearScale, chosenXAxis);
 
         // changes classes to change bold text
         if (chosenXAxis === "poverty") {
