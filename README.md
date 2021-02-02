@@ -18,7 +18,7 @@ JavaScript/D3/HTML/CSS
 ## Live webpage
 
 
-**Thanks for stopping by!**
+##Thanks for stopping by!
 
 ### Copyright
 
