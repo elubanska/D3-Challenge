@@ -1,6 +1,6 @@
 # Data Journalism and D3
 
-![Newsroom](images/bubbles.gif)
+![Newsroom](Images/bubbles.gif)
 
 ## Background
 
